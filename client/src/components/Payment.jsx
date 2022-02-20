@@ -32,7 +32,7 @@ class Payment extends React.Component {
 
   openPayModal(amt) {
     console.log("Status before call:", this.state.status)
-    var amount = amt * 100; //Razorpay consider the amount in paise
+    var amount = amt; //Razorpay consider the amount in paise
     var options = {
       "key": "rzp_test_yrdCJAubXRm4Ga",
       "amount": 0, // 2000 paise = INR 20, amount in paisa
@@ -47,7 +47,7 @@ class Payment extends React.Component {
           transactionid: response.razorpay_payment_id,
           transactionamount: amount,
         }
-        axios.post(`http://localhost:8000/razorpay/${amount}`)
+        axios.post(`http://pizza9620.herokuapp.com:8000/razorpay/${amount}`)
           .then(this.rerender)
           .catch(err => {
             console.log("Throwing back the exception", err)
@@ -57,7 +57,7 @@ class Payment extends React.Component {
         "color": "#FF0000"
       }
     };
-    axios.post(`http://localhost:8000/razorpay/${amount}`)
+    axios.post(`http://pizza9620.herokuapp.com:8000/razorpay/${amount}`)
       .then(res => {
         options.order_id = res.data.id;
         options.amount = res.data.amount;
