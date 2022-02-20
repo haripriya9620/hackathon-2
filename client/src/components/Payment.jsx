@@ -47,7 +47,7 @@ class Payment extends React.Component {
           transactionid: response.razorpay_payment_id,
           transactionamount: amount,
         }
-        axios.post(`http://pizza9620.herokuapp.com:8000/razorpay/${amount}`)
+        axios.post(`https://pizza9620.herokuapp.com:8000/razorpay/${amount}`)
           .then(this.rerender)
           .catch(err => {
             console.log("Throwing back the exception", err)
@@ -57,7 +57,7 @@ class Payment extends React.Component {
         "color": "#FF0000"
       }
     };
-    axios.post(`http://pizza9620.herokuapp.com:8000/razorpay/${amount}`)
+    axios.post(`https://pizza9620.herokuapp.com:8000/razorpay/${amount}`)
       .then(res => {
         options.order_id = res.data.id;
         options.amount = res.data.amount;
